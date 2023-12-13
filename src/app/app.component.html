@@ -1,0 +1,119 @@
+
+   <div class="container mt-5">
+    <button type="button" class="btn btn-primary button1 button2" data-bs-toggle="modal" data-bs-target="#addNoteModal">
+      <i class="bi bi-plus" style="font-size: 30px;"></i>
+    </button>
+  
+    <div class="row mt-4">
+      <div class="col-md-4 notediv" *ngFor="let note of notes; let i = index" >
+        <div class="card card-body notediv2"  [ngStyle]="{'background-color': note.mycolor,}">
+          <div class="d-flex flex-row justify-content-between align-items-center">
+            <div>
+              <h5>{{ note.title }}</h5>
+              <p>{{ note.content }}</p>
+            </div>
+            <div>
+              <span class="mx-2 editicon" (click)="editNote(i)">
+                <!-- <span class="mx-2" > -->
+                <i class="bi bi-pen-fill"  data-bs-toggle="modal" data-bs-target="#editNoteModal"></i>
+              </span>
+              <span class="mx-2 editicon" (click)="deleteNote(i)">
+                <i class="bi bi-trash-fill"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+  
+    <div class="modal fade" id="addNoteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+      <div class="modal-dialog">
+        <div class="modal-content"  [ngStyle]="{'background-color':newNote.mycolor}">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New Note</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form (submit)="addNote()">
+              <div class="mb-3">
+                <label for="note-title" class="col-form-label">Title:</label>
+                <input type="text" class="form-control" id="note-title" [(ngModel)]="newNote.title" name="title" required>
+              </div>
+              <div class="mb-3">
+                <label for="note-content" class="col-form-label">Description:</label>
+                <textarea class="form-control" id="note-content" [(ngModel)]="newNote.content" name="content" required></textarea>
+              </div>
+             
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Background Color
+                </button>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item" *ngFor="let option of ['lightcoral', 'lightpink', 'lightblue','aliceblue','beige','linen','mistyrose','plum','peachpuff','thistle','palegreen']"  [ngStyle]="{'background-color': option,'color':option}">
+                    <a href="#" (click)="newNote.mycolor = option" value="option"  [ngStyle]="{'background-color': option,'color':option}">{{ option }}hiiiiiiiiiiiiiii
+                    </a>
+                </ul>
+              </div>
+              
+              <!-- <p>Selected Option: {{color }}</p> -->
+              
+              
+               <div class="modal-footer">
+                <button type="button" class="btn btn-danger button1" data-bs-dismiss="modal"><i class="bi bi-x" style="font-size: 30px;"></i>
+                </button>
+                <button type="submit" class="btn btn-primary button1 ms-3" data-bs-dismiss="modal"> <i class="bi bi-check" style="font-size: 30px;"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="editNoteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content" [ngStyle]="{'background-color':editedNote.mycolor}" >
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Note</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form (submit)="updateNote()">
+              <div class="mb-3">
+                <label for="note-title" class="col-form-label">Title:</label>
+                <input type="text" class="form-control" id="note-title" [(ngModel)]="editedNote.title" name="title" required>
+              </div>
+              <div class="mb-3">
+                <label for="note-content" class="col-form-label">Description:</label>
+                <textarea class="form-control" id="note-content" [(ngModel)]="editedNote.content" name="content" required></textarea>
+              </div>
+              <!-- <input type="color" id="colorpicker" [(ngModel)]="newNote.mycolor" (change)="onColorChange(editedNote.mycolor)"> -->
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Background Color
+                </button>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item" *ngFor="let option of ['lightcoral', 'lightpink', 'lightblue','aliceblue','beige','linen','mistyrose','plum','peachpuff','thistle','palegreen']"  [ngStyle]="{'background-color': option,'color':option}">
+                    <a href="#" (click)="editedNote.mycolor = option" value="option"  [ngStyle]="{'background-color': option,'color':option}">{{ option }}hiiiiiiiiiiiiiii
+                    </a>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger button1" data-bs-dismiss="modal"><i class="bi bi-x" style="font-size: 30px;"></i>
+                </button>
+                <button type="submit" class="btn btn-primary button1 ms-3" data-bs-dismiss="modal"> <i class="bi bi-check" style="font-size: 30px;"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+ 
+
+  

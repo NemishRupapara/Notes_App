@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import "~bootstrap-icons/font/bootstrap-icons.css"; */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+
+
+body{
+    background: rgb(223, 226, 228)!important;
+    
+    margin-top: 20px!important;
+}
+.card{
+    
+
+    position: relative!important;
+    display: flex!important;
+    flex-direction: column!important;
+    min-width: 0!important;
+    word-wrap: break-word!important;
+    
+    border:0 solid transparent !important;
+    border-radius: 1!important;
+    margin-bottom: 30px!important;
+
+}
+
+    .card-body{
+        flex: 1 1 auto!important;
+        padding: 1.5rem!important;
+
+    }
+.button1{
+    border-radius: 50%;
+}
+.editicon{
+    /* display: none; */
+    opacity: 0;
+    
+
+}
+/* .deleteicon{
+
+} */
+
+
+.notediv:hover .editicon {
+    opacity: 1;
+    transition: 1.5s;
+    
+}
+.notediv2:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+    }
+
+.button2{
+    background-color: rgb(35, 0, 234);
+        box-shadow: 0 0 10px rgba(46, 0, 130, 0.7); 
+
+}
